@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/Cellar/bash/4.4.23/bin/bash
 
 echo "Create output directory"
 mkdir -p output
@@ -14,6 +14,6 @@ do
         supplierName=${supplierName//[$'\t\r\n']}
         supplierName=${supplierName// /_}
         mkdir -p output/$supplierName
-        cp $file output/$supplierName/$supplierName.fl.pdf
+        cp $file output/$supplierName/$supplierName.${branch[$branchCode]}.pdf
     done
 done

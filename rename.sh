@@ -1,4 +1,4 @@
-#!/usr/local/Cellar/bash/4.4.23/bin/bash
+#!/bin/bash
 
 echo "Create output directory"
 mkdir -p output
@@ -7,7 +7,8 @@ declare -A branch=( ["AA"]="粉嶺" ["AB"]="馬鞍山" ["AC"]="荃灣" ["AD"]="�
 
 for branchCode in "${!branch[@]}";
 do
-    for file in ./$branchCode/p*.pdf
+    pdfseparate -f 1 input/${branchCode}_$1.pdf input/${branchCode}_p%d.pdf
+    for file in ./input/${branchCode}_p*.pdf
     do
         supplierName=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 60,70,80,1000 -i $file)
         supplierName=${supplierName//\"/}

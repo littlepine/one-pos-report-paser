@@ -15,8 +15,9 @@ do
     branchCode=${branchCode//[$'\t\r\n']}
     echo "Detected branch code $branchCode"
     cp $file input/$branchCode.pdf
-    pdfseparate -f 1 input/${branchCode}.pdf input/${branchCode}_p%d.pdf
-    for file in ./input/${branchCode}_p*.pdf
+    mkdir -p input_separated
+    pdfseparate -f 1 input/${branchCode}.pdf input_separated/${branchCode}_p%d.pdf
+    for file in ./input_separated/${branchCode}_p*.pdf
     do
         supplierName=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 60,50,75,500 -i $file)
         supplierName=${supplierName//\"/}

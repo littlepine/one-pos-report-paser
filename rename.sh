@@ -11,7 +11,8 @@ find ./input/ -name "* *" -type f | rename 's/ /_/g'
 for file in ./input/*.pdf
 do 
     echo "Processing file $file"
-    branchCode=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 15,150,35,202 -i $file)
+    # Dimension: (top,left,bottom,right)
+    branchCode=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 15,150,40,202 -i $file)
     branchCode=${branchCode//[$'\t\r\n']}
     echo "Detected branch code $branchCode"
     cp $file input/$branchCode.pdf

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Clean up the output directory"
+rm -rf output/
+rm -rf input_separated/
 echo "Create output directory"
 mkdir -p output
 
@@ -12,7 +15,7 @@ for file in ./input/*.pdf
 do 
     echo "Processing file $file"
     # Dimension: (top,left,bottom,right)
-    branchCode=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 15,150,40,202 -i $file)
+    branchCode=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 15,150,40,210 -i $file)
     branchCode=${branchCode//[$'\t\r\n']}
     echo "Detected branch code $branchCode"
     cp $file input/$branchCode.pdf
@@ -20,7 +23,7 @@ do
     pdfseparate -f 1 input/${branchCode}.pdf input_separated/${branchCode}_p%d.pdf
     for file in ./input_separated/${branchCode}_p*.pdf
     do
-        supplierName=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 60,50,75,500 -i $file)
+        supplierName=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 60,50,80,500 -i $file)
         supplierName=${supplierName//\"/}
         supplierName=${supplierName//[$'\t\r\n']}
         supplierName=${supplierName// /_}

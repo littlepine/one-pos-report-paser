@@ -23,7 +23,7 @@ do
     pdfseparate -f 1 input/${branchCode}.pdf input_separated/${branchCode}_p%d.pdf
     for file in ./input_separated/${branchCode}_p*.pdf
     do
-        supplierName=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 60,50,80,500 -i $file)
+        supplierName=$(java -jar tabula-1.0.2-jar-with-dependencies.jar -a 58,58,75,500 -i $file)
         supplierName=${supplierName//\"/}
         supplierName=${supplierName//[$'\t\r\n']}
         supplierName=${supplierName// /_}

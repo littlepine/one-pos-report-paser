@@ -1,4 +1,6 @@
 ## Ignore the data input and output folder
-
+input
 input/*.pdf
+input_separated/
 output
+*.zip

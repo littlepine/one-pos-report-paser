@@ -6,7 +6,7 @@ rm -rf input_separated/
 echo "Create output directory"
 mkdir -p output
 
-declare -A branch=( ["AA"]="粉嶺" ["AB"]="馬鞍山" ["AC"]="荃灣" ["AD"]="上水" ["AE"]="九龍灣")
+declare -A branch=( ["AA"]="粉嶺" ["AB"]="馬鞍山" ["AC"]="荃灣" ["AD"]="上水" ["AE"]="Online")
 
 # remove space in file name
 find ./input/ -name "* *" -type f | rename 's/ /_/g'
